@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PropNest Solutions — Emergency Property Management, Dubai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D5A0;
+    --gold-dark: #9A7A30;
+    --ink: #1A1A18;
+    --ink-mid: #3D3D38;
+    --ink-soft: #6B6B64;
+    --cream: #F8F5EE;
+    --cream-dark: #EDE8DC;
+    --white: #FFFFFF;
+    --urgent: #C0392B;
+    --urgent-bg: #FDF1F0;
+    --green: #2E7D5E;
+    --green-bg: #F0F7F4;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── ANNOUNCEMENT BAR ── */
+  .ann-bar {
+    background: var(--urgent);
+    color: #fff;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    animation: pulse-bg 3s ease-in-out infinite;
+  }
+  @keyframes pulse-bg {
+    0%, 100% { background: var(--urgent); }
+    50%       { background: #A93226; }
+  }
+  .ann-bar span { margin: 0 8px; opacity: 0.6; }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--ink);
+    padding: 18px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+  }
+  .logo sub {
+    font-size: 10px;
+    font-weight: 300;
+    color: var(--gold-light);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: block;
+    margin-top: -4px;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .nav-cta {
+    background: var(--gold);
+    color: var(--ink);
+    padding: 10px 22px;
+    border-radius: 2px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold-light); }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--ink);
+    min-height: 88vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 80px 40px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse 60% 50% at 80% 50%, rgba(201,168,76,0.08) 0%, transparent 70%),
+      repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 61px),
+      repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(255,255,255,0.015) 60px, rgba(255,255,255,0.015) 61px);
+  }
+  .hero-inner {
+    max-width: 760px;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.9s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.25);
+    color: var(--gold-light);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 2px;
+    margin-bottom: 28px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--urgent);
+    animation: blink 1.5s ease-in-out infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 6vw, 68px);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.12;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero-sub {
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 40px;
+    max-width: 540px;
+    line-height: 1.65;
+  }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--gold);
+    color: var(--ink);
+    padding: 15px 28px;
+    border-radius: 2px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: all 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    color: rgba(255,255,255,0.75);
+    padding: 15px 28px;
+    border-radius: 2px;
+    border: 1px solid rgba(255,255,255,0.2);
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+  .hero-trust {
+    margin-top: 48px;
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    font-weight: 300;
+  }
+  .trust-icon {
+    width: 28px; height: 28px;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold);
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  /* ── CRISIS STRIP ── */
+  .crisis-strip {
+    background: var(--urgent-bg);
+    border-top: 3px solid var(--urgent);
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .crisis-strip-icon {
+    width: 48px; height: 48px;
+    background: var(--urgent);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .crisis-strip p { font-size: 14px; color: var(--ink-mid); line-height: 1.6; }
+  .crisis-strip strong { color: var(--urgent); font-weight: 500; }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 80px 40px; }
+  .section-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::after { content: ''; flex: 1; max-width: 40px; height: 1px; background: var(--gold-dark); }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 4vw, 46px);
+    font-weight: 300;
+    line-height: 1.18;
+    margin-bottom: 16px;
+  }
+  .section-title em { font-style: italic; color: var(--gold-dark); }
+  .section-body {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--ink-soft);
+    max-width: 560px;
+    line-height: 1.75;
+  }
+
+  /* ── SERVICES ── */
+  .services { background: var(--white); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1px;
+    background: var(--cream-dark);
+    border: 1px solid var(--cream-dark);
+    margin-top: 48px;
+  }
+  .svc-card {
+    background: var(--white);
+    padding: 36px 32px;
+    position: relative;
+    transition: background 0.2s;
+  }
+  .svc-card:hover { background: var(--cream); }
+  .svc-card.featured {
+    background: var(--ink);
+  }
+  .svc-card.featured:hover { background: var(--ink-mid); }
+  .svc-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+    margin-bottom: 16px;
+  }
+  .badge-urgent { background: var(--urgent-bg); color: var(--urgent); }
+  .badge-popular { background: var(--gold); color: var(--ink); }
+  .badge-premium { background: var(--cream-dark); color: var(--ink-soft); }
+  .svc-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    margin-bottom: 4px;
+  }
+  .svc-price sub {
+    font-size: 14px;
+    font-weight: 300;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink-soft);
+  }
+  .svc-card.featured .svc-price { color: var(--gold); }
+  .svc-card.featured .svc-price sub { color: var(--gold-light); opacity: 0.7; }
+  .svc-name {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    margin-top: 6px;
+  }
+  .svc-card.featured .svc-name { color: var(--white); }
+  .svc-desc {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    margin-bottom: 20px;
+  }
+  .svc-card.featured .svc-desc { color: rgba(255,255,255,0.55); }
+  .svc-features { list-style: none; }
+  .svc-features li {
+    font-size: 13px;
+    font-weight: 300;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--cream-dark);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    color: var(--ink-mid);
+  }
+  .svc-card.featured .svc-features li {
+    color: rgba(255,255,255,0.7);
+    border-bottom-color: rgba(255,255,255,0.1);
+  }
+  .svc-features li:last-child { border-bottom: none; }
+  .svc-features li::before {
+    content: '✓';
+    color: var(--gold);
+    font-weight: 500;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .svc-cta {
+    display: block;
+    text-align: center;
+    margin-top: 24px;
+    padding: 12px;
+    border: 1px solid var(--cream-dark);
+    border-radius: 2px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--ink);
+    transition: all 0.2s;
+    letter-spacing: 0.03em;
+  }
+  .svc-cta:hover { background: var(--cream-dark); }
+  .svc-card.featured .svc-cta {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: transparent;
+  }
+  .svc-card.featured .svc-cta:hover { background: var(--gold); color: var(--ink); }
+
+  /* ── HOW IT WORKS ── */
+  .how { background: var(--cream); }
+  .steps-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 32px;
+    margin-top: 52px;
+    position: relative;
+  }
+  .step {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    animation: fadeUp 0.7s ease both;
+  }
+  .step:nth-child(2) { animation-delay: 0.1s; }
+  .step:nth-child(3) { animation-delay: 0.2s; }
+  .step:nth-child(4) { animation-delay: 0.3s; }
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+  .step h3 {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .step p {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--ink-soft);
+    line-height: 1.65;
+  }
+  .step-divider {
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+    margin: 4px 0;
+  }
+
+  /* ── FORM SECTION ── */
+  .form-section {
+    background: var(--ink);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding: 0;
+    align-items: stretch;
+  }
+  .form-left {
+    padding: 80px 60px;
+    background: var(--ink);
+    position: relative;
+    overflow: hidden;
+  }
+  .form-left::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 30% 80%, rgba(201,168,76,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .form-left .section-label { color: var(--gold); }
+  .form-left .section-label::after { background: var(--gold-dark); }
+  .form-left .section-title { color: var(--white); }
+  .form-left .section-body { color: rgba(255,255,255,0.5); }
+  .form-response-time {
+    margin-top: 36px;
+    padding: 20px 24px;
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .response-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+  .response-text h4 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gold-light);
+    margin-bottom: 2px;
+  }
+  .response-text p { font-size: 12px; color: rgba(255,255,255,0.4); font-weight: 300; }
+  .wa-direct {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    padding: 14px 20px;
+    background: #25D366;
+    border-radius: 2px;
+    transition: opacity 0.2s;
+  }
+  .wa-direct:hover { opacity: 0.88; }
+  .wa-direct svg { width: 20px; height: 20px; fill: #fff; flex-shrink: 0; }
+  .wa-direct span { font-size: 13px; font-weight: 500; color: #fff; letter-spacing: 0.03em; }
+
+  .form-right {
+    background: var(--cream);
+    padding: 80px 60px;
+  }
+  .form-right h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    margin-bottom: 28px;
+    color: var(--ink);
+  }
+  .field-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .field-group.full { grid-template-columns: 1fr; }
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  input, select, textarea {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--ink);
+    background: var(--white);
+    border: 1px solid var(--cream-dark);
+    border-radius: 2px;
+    padding: 12px 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    width: 100%;
+    appearance: none;
+  }
+  input::placeholder, textarea::placeholder { color: var(--ink-soft); opacity: 0.5; }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.12);
+  }
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%236B6B64'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 8px;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+  textarea { resize: vertical; min-height: 90px; }
+  .radio-group { display: flex; flex-direction: column; gap: 8px; margin-top: 2px; }
+  .radio-opt {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--ink-mid);
+    cursor: pointer;
+  }
+  .radio-opt input[type="radio"] {
+    width: 16px; height: 16px;
+    accent-color: var(--gold);
+    flex-shrink: 0;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+  }
+  .radio-opt input[type="radio"]:focus { box-shadow: none; }
+  .consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    margin: 14px 0;
+    cursor: pointer;
+  }
+  .consent input[type="checkbox"] {
+    width: 14px; height: 14px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    accent-color: var(--gold);
+    border: none;
+    box-shadow: none;
+    padding: 0;
+  }
+  .consent input[type="checkbox"]:focus { box-shadow: none; }
+  .submit-btn {
+    width: 100%;
+    background: var(--gold);
+    color: var(--ink);
+    border: none;
+    padding: 15px 28px;
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .submit-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .submit-btn:active { transform: translateY(0); }
+  .form-note {
+    font-size: 11px;
+    color: var(--ink-soft);
+    text-align: center;
+    margin-top: 12px;
+    font-weight: 300;
+  }
+
+  /* ── SUCCESS STATE ── */
+  .success-msg {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+  }
+  .success-msg.visible { display: block; }
+  .success-icon {
+    width: 56px; height: 56px;
+    background: var(--green-bg);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px;
+    font-size: 24px;
+  }
+  .success-msg h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+  .success-msg p { font-size: 14px; font-weight: 300; color: var(--ink-soft); }
+
+  /* ── TRUST SECTION ── */
+  .trust-section {
+    background: var(--white);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0;
+  }
+  .trust-card {
+    padding: 40px 32px;
+    border-right: 1px solid var(--cream-dark);
+    border-bottom: 1px solid var(--cream-dark);
+    text-align: center;
+  }
+  .trust-card:last-child { border-right: none; }
+  .trust-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .trust-card p { font-size: 12px; font-weight: 300; color: var(--ink-soft); line-height: 1.5; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: gap;
+    gap: 20px;
+  }
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--gold);
+  }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a {
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: rgba(255,255,255,0.8); }
+  .footer-copy { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.25); }
+
+  /* ── WHATSAPP FLOAT ── */
+  .wa-float {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 58px; height: 58px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    text-decoration: none;
+    z-index: 999;
+    transition: transform 0.2s, box-shadow 0.2s;
+    animation: wa-enter 0.6s 1.5s cubic-bezier(.34,1.56,.64,1) both;
+  }
+  @keyframes wa-enter {
+    from { transform: scale(0); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+  }
+  .wa-float:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(37,211,102,0.5); }
+  .wa-float svg { width: 28px; height: 28px; fill: #fff; }
+  .wa-tooltip {
+    position: absolute;
+    right: 70px;
+    background: var(--ink);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 400;
+    white-space: nowrap;
+    padding: 8px 14px;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+  }
+  .wa-float:hover .wa-tooltip { opacity: 1; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .hero { padding: 60px 20px; }
+    section { padding: 60px 20px; }
+    .form-section { grid-template-columns: 1fr; }
+    .form-left { padding: 60px 24px; }
+    .form-right { padding: 40px 24px; }
+    .field-group { grid-template-columns: 1fr; }
+    footer { flex-direction: column; align-items: flex-start; padding: 32px 20px; }
+    .crisis-strip { flex-direction: column; padding: 24px 20px; }
+    .trust-section { grid-template-columns: 1fr 1fr; }
+    .trust-card { border-right: 1px solid var(--cream-dark); }
+    .trust-card:nth-child(even) { border-right: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="ann-bar">
+  &#9679; Active situation: Responding to all Dubai property enquiries within 2 hours
+  <span>|</span>
+  Emergency inspections available 7 days a week
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    PropNest
+    <sub>Solutions</sub>
+  </div>
+  <a href="https://wa.me/971567630037?text=Hi,%20I%20need%20urgent%20help%20with%20my%20Dubai%20property." class="nav-cta">WhatsApp us now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Emergency property management · Dubai</div>
+    <h1>
+      Your Dubai property,<br>
+      <em>safe and managed</em><br>
+      while you're away.
+    </h1>
+    <p class="hero-sub">
+      Evacuated or overseas? PropNest secures, manages, and reports on your Dubai property — so you never have to worry about what's happening inside your home from the other side of the world.
+    </p>
+    <div class="hero-actions">
+      <a href="#inquiry" class="btn-primary">
+        Get a free consultation
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="https://wa.me/971567630037?text=Hi,%20I%20need%20help%20with%20my%20Dubai%20property." class="btn-secondary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Chat on WhatsApp
+      </a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-icon">✓</div>
+        RERA-compliant management
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">⚡</div>
+        Inspection within 24 hours
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">📊</div>
+        Monthly owner reports
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CRISIS STRIP -->
+<div class="crisis-strip">
+  <div class="crisis-strip-icon">!</div>
+  <p>
+    <strong>For landlords who have recently evacuated Dubai:</strong> If your property is empty or your tenant is unreachable, contact us immediately. We offer emergency property inspections across Dubai within 24 hours. Your investment is safe with PropNest.
+  </p>
+</div>
+
+<!-- SERVICES -->
+<section class="services">
+  <div class="section-label">Our services</div>
+  <div class="section-title">Choose the right <em>level of cover</em></div>
+  <div class="section-body">Whether you need a one-time security check or full ongoing management, we have a service built for your situation.</div>
+  <div class="services-grid">
+
+    <div class="svc-card">
+      <span class="svc-badge badge-urgent">Crisis offer</span>
+      <div class="svc-price">AED 1,500 <sub>one-time</sub></div>
+      <div class="svc-name">Emergency secure</div>
+      <div class="svc-desc">For landlords who have just left and need eyes on their property immediately.</div>
+      <ul class="svc-features">
+        <li>Property inspection within 24 hrs</li>
+        <li>Full photo & condition report</li>
+        <li>Lock and utility status check</li>
+        <li>Tenant welfare confirmation</li>
+        <li>WhatsApp report to you directly</li>
+      </ul>
+      <a href="#inquiry" class="svc-cta">Book an inspection →</a>
+    </div>
+
+    <div class="svc-card featured">
+      <span class="svc-badge badge-popular">Most popular</span>
+      <div class="svc-price">AED 3,000 <sub>onboarding + 5–8% monthly rent</sub></div>
+      <div class="svc-name">Full property management</div>
+      <div class="svc-desc">Complete hands-off management for the overseas landlord — we handle everything.</div>
+      <ul class="svc-features">
+        <li>Everything in Emergency Secure</li>
+        <li>Tenant sourcing or retention</li>
+        <li>Rent collection & owner transfer</li>
+        <li>Maintenance coordination</li>
+        <li>Monthly financial report</li>
+        <li>24/7 tenant helpline</li>
+      </ul>
+      <a href="#inquiry" class="svc-cta">Start full management →</a>
+    </div>
+
+    <div class="svc-card">
+      <span class="svc-badge badge-premium">Premium</span>
+      <div class="svc-price">AED 5,000 <sub>onboarding + 8–10% monthly rent</sub></div>
+      <div class="svc-name">Absentee landlord package</div>
+      <div class="svc-desc">Full management plus legal, insurance, and optional sale mandate support.</div>
+      <ul class="svc-features">
+        <li>Everything in Full Management</li>
+        <li>RERA document & legal handling</li>
+        <li>War risk insurance liaison</li>
+        <li>Bi-weekly property visits</li>
+        <li>Sale mandate if requested</li>
+        <li>Dedicated account manager</li>
+      </ul>
+      <a href="#inquiry" class="svc-cta">Enquire about premium →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- TRUST NUMBERS -->
+<div class="trust-section">
+  <div class="trust-card">
+    <div class="trust-num">24h</div>
+    <p>Maximum response time to every new enquiry, guaranteed.</p>
+  </div>
+  <div class="trust-card">
+    <div class="trust-num">100%</div>
+    <p>Transparent monthly reporting — no surprises, no hidden fees.</p>
+  </div>
+  <div class="trust-card">
+    <div class="trust-num">RERA</div>
+    <p>All tenancy and management work conducted in full RERA compliance.</p>
+  </div>
+  <div class="trust-card">
+    <div class="trust-num">7×</div>
+    <p>Days a week available — because your property doesn't take weekends off.</p>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="section-label">How it works</div>
+  <div class="section-title">Up and running in <em>four simple steps</em></div>
+  <div class="steps-row">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-divider"></div>
+      <h3>Tell us about your property</h3>
+      <p>Fill in the form below or message us on WhatsApp. We'll respond within 2 hours, any day of the week.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-divider"></div>
+      <h3>We inspect within 24 hours</h3>
+      <p>Our team visits your property, photographs every room, checks utilities and tenant status, and reports directly to you on WhatsApp.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-divider"></div>
+      <h3>We sign your management agreement</h3>
+      <p>A simple, RERA-compliant Property Management Agreement is signed digitally — no need to travel to Dubai for paperwork.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-divider"></div>
+      <h3>Monthly reports, always</h3>
+      <p>Every month, you receive a full property and financial report. Rent is transferred to your account on a fixed schedule.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FORM SECTION -->
+<div class="form-section" id="inquiry">
+  <div class="form-left">
+    <div class="section-label" style="color:var(--gold)">Get in touch</div>
+    <div class="section-title" style="color:var(--white)">Talk to us about your <em>property today</em></div>
+    <p class="section-body">Whether you've already left or are planning to leave, the sooner you speak to us, the sooner your property is protected.</p>
+
+    <div class="form-response-time">
+      <div class="response-icon">⚡</div>
+      <div class="response-text">
+        <h4>We respond within 2 hours</h4>
+        <p>Every inquiry is personally reviewed and responded to by Abdul Danish, founder of PropNest Solutions.</p>
+      </div>
+    </div>
+
+    <a href="https://wa.me/971567630037?text=Hi%20PropNest%2C%20I%20need%20help%20with%20my%20Dubai%20property." class="wa-direct" style="margin-top:20px">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <span>Message us directly on WhatsApp</span>
+    </a>
+  </div>
+
+  <div class="form-right">
+    <h2>Property enquiry form</h2>
+
+    <form id="inquiry-form">
+      <div class="field-group">
+        <div class="field">
+          <label for="fname">First name *</label>
+          <input type="text" id="fname" name="fname" placeholder="Rahul" required>
+        </div>
+        <div class="field">
+          <label for="lname">Last name *</label>
+          <input type="text" id="lname" name="lname" placeholder="Sharma" required>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <div class="field">
+          <label for="email">Email address *</label>
+          <input type="email" id="email" name="email" placeholder="rahul@email.com" required>
+        </div>
+        <div class="field">
+          <label for="whatsapp">WhatsApp number *</label>
+          <input type="tel" id="whatsapp" name="whatsapp" placeholder="+91 98XXXXXXXX" required>
+        </div>
+      </div>
+
+      <div class="field-group full">
+        <div class="field">
+          <label for="property">Property address / area in Dubai *</label>
+          <input type="text" id="property" name="property" placeholder="e.g. Marina Heights, Dubai Marina — or just the area" required>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <div class="field">
+          <label for="status">Property status *</label>
+          <select id="status" name="status" required>
+            <option value="" disabled selected>Select one</option>
+            <option>Tenanted — tenant still there</option>
+            <option>Tenanted — tenant has left</option>
+            <option>Empty — no tenant</option>
+            <option>Not sure — haven't been able to check</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="location">Your current location *</label>
+          <select id="location" name="location" required>
+            <option value="" disabled selected>Where are you now?</option>
+            <option>Still in UAE</option>
+            <option>India</option>
+            <option>UK</option>
+            <option>Canada / USA</option>
+            <option>Europe</option>
+            <option>Other GCC country</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field-group full">
+        <div class="field">
+          <label>Service interested in *</label>
+          <div class="radio-group">
+            <label class="radio-opt">
+              <input type="radio" name="service" value="emergency" required>
+              Emergency secure — AED 1,500 (one-time inspection)
+            </label>
+            <label class="radio-opt">
+              <input type="radio" name="service" value="full">
+              Full property management — AED 3,000 onboarding
+            </label>
+            <label class="radio-opt">
+              <input type="radio" name="service" value="premium">
+              Absentee landlord package — AED 5,000 onboarding
+            </label>
+            <label class="radio-opt">
+              <input type="radio" name="service" value="unsure">
+              Not sure — I just need advice first
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="field-group full">
+        <div class="field">
+          <label for="urgency">How urgent is this?</label>
+          <select id="urgency" name="urgency">
+            <option value="" disabled selected>Select urgency level</option>
+            <option>Extremely urgent — I left within the last 48 hours</option>
+            <option>Urgent — I've been away 1–2 weeks</option>
+            <option>Planning ahead — not urgent yet</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field-group full">
+        <div class="field">
+          <label for="message">Anything else we should know</label>
+          <textarea id="message" name="message" placeholder="Tell us about your property, your tenant situation, or any specific concerns you have..."></textarea>
+        </div>
+      </div>
+
+      <label class="consent">
+        <input type="checkbox" name="consent" required>
+        I agree to be contacted by PropNest Solutions regarding my property enquiry. My details will not be shared with any third parties.
+      </label>
+
+      <button type="submit" class="submit-btn">
+        Send my enquiry
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+      <p class="form-note">We respond to every enquiry within 2 hours · 7 days a week</p>
+    </form>
+
+    <div class="success-msg" id="success">
+      <div class="success-icon">✓</div>
+      <h3>Enquiry received</h3>
+      <p>Thank you. Abdul will personally respond to your message within 2 hours on WhatsApp or email. Your property is in safe hands.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">PropNest Solutions</div>
+  <div class="footer-links">
+    <a href="#inquiry">Get in touch</a>
+    <a href="https://wa.me/971567630037">WhatsApp</a>
+    <a href="mailto:propnestsolutions@outlook.com">Email</a>
+  </div>
+  <div class="footer-copy">© 2026 PropNest Solutions. Dubai, UAE.</div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/971567630037?text=Hi%20PropNest%2C%20I%20need%20urgent%20help%20with%20my%20Dubai%20property." class="wa-float" target="_blank" rel="noopener">
+  <div class="wa-tooltip">Chat with us</div>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+document.getElementById('inquiry-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const form = this;
+  const btn = form.querySelector('.submit-btn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  setTimeout(() => {
+    form.style.display = 'none';
+    document.getElementById('success').classList.add('visible');
+    const wa = `https://wa.me/971567630037?text=${encodeURIComponent(
+      `Hi PropNest! I just submitted an inquiry.\n\nName: ${document.getElementById('fname').value} ${document.getElementById('lname').value}\nProperty: ${document.getElementById('property').value}\nStatus: ${document.getElementById('status').value}\nService: ${document.querySelector('input[name=service]:checked')?.value || 'Not selected'}\nUrgency: ${document.getElementById('urgency').value}`
+    )}`;
+    setTimeout(() => { window.open(wa, '_blank'); }, 1200);
+  }, 900);
+});
+</script>
+</body>
+</html>
